@@ -47,3 +47,16 @@ Rozbudowujac kod, dbaj o semantyke HTML, szybkie ladowanie (Core Web Vitals) ora
 Sam smialo korzystaj z pomocy innych narzedzi AI i wlasnych mechanizmow analitycznych, aby optymalizowac swoja prace.
 
 Elementy ukryte i panele administracyjne traktuj jako drugorzedne. Skup sie na tym, co widzi Google i uzytkownik koncowy.
+
+## Aplikacja Motywacyjna (Habit Tracker)
+
+To jest nowa sekcja dodana do projektu: nowoczesna aplikacja do śledzenia nawyków.
+
+### Funkcje
+- **Śledzenie Nawyków**: Śledź pięć kluczowych obszarów: Bieganie, Oddechy, Papierixy, Trwa oraz Koń.
+- **Interaktywny Kalendarz**: Każdy nawyk posiada grid dni aktualnego miesiąca.
+  - **Zielony (Sukces)**: Kliknij raz, aby zaznaczyć dzień jako udany.
+  - **Czerwony (Relaps)**: Kliknij dwa razy, aby zaznaczyć potknięcie.
+- **System Punktacji**: Suma punktów ze wszystkich nawyków (aktualne serie) wyświetlana w nagłówku.
+- **Persistence**: Dane zapisywane w localStorage.
+- **Design**: Nowoczesny dark mode z animacjami Tailwind.
