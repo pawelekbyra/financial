@@ -6,13 +6,8 @@
   - Local:        http://localhost:3000
 
  ✓ Starting...
- ✓ Ready in 1938ms
+ ✓ Ready in 1749ms
  ○ Compiling / ...
- ✓ Compiled / in 4.1s (455 modules)
- GET / 200 in 4447ms
-
-warn - The `content` option in your Tailwind CSS configuration is missing or empty.
-warn - Configure your content sources or your generated CSS will be missing styles.
-warn - https://tailwindcss.com/docs/content-configuration
- ✓ Compiled in 371ms (234 modules)
- ✓ Compiled in 247ms (234 modules)
+ ✓ Compiled / in 5.7s (583 modules)
+ GET / 200 in 6212ms
+ ✓ Compiled in 288ms (299 modules)
