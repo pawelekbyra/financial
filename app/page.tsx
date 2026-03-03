@@ -57,27 +57,24 @@ export default function Page() {
 
   const calculateStreak = (entries: Record<string, Status>) => {
     let streak = 0;
-    const today = startOfDay(new Date());
+    // As we are showing March 2026, let's calculate streak relative to the end of March 2026
+    // or the current date if it's within March 2026.
+    // For a motivation app focusing on a specific month, we usually want to see the progress in that month.
+    const today = new Date();
+    const march2026End = new Date(2026, 2, 31);
 
-    // Start from today and go backwards
+    const referenceDate = startOfDay(isAfter(today, march2026End) ? march2026End : today);
+
+    // Start from referenceDate and go backwards
     for (let i = 0; i < 365; i++) {
-      const dateStr = format(subDays(today, i), 'yyyy-MM-dd');
+      const dateStr = format(subDays(referenceDate, i), 'yyyy-MM-dd');
       const status = entries[dateStr];
 
       if (status === 'success') {
         streak++;
       } else if (status === 'fail') {
-        // Break on relapse
         break;
       } else {
-        // If it's today and not marked yet, we don't break the streak,
-        // but we don't count it as a point yet.
-        // If it's a past day and not marked, it's an implicit break in some systems,
-        // but for "motivation" we might want to just skip it or break it.
-        // Let's say if it's NOT success AND NOT fail, we continue looking but don't increment.
-        // UNLESS the user wants strict daily streaks.
-        // User said: "od czerwonego dnia minelo 2 dni wiec musi to widziec. po zrelapsowaniu licznik sie restartuje"
-        // This implies we count points since last relapse.
         continue;
       }
     }
@@ -112,9 +109,7 @@ export default function Page() {
           </p>
         </header>
 
-        <StatsSummary totalScore={totalScore} habitCount={habits.length} />
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="flex flex-col gap-8 mb-12">
           {habitStats.map(habit => (
             <HabitCard
               key={habit.id}
@@ -124,6 +119,8 @@ export default function Page() {
             />
           ))}
         </div>
+
+        <StatsSummary totalScore={totalScore} habitCount={habits.length} />
 
         <footer className="mt-20 text-center pb-8">
           <p className="text-zinc-700 text-xs font-medium uppercase tracking-[0.2em]">
